@@ -28,16 +28,16 @@ class Television:
         if self.__status:
             if self.__channel == Television.MAX_CHANNEL:
                 self.__channel = Television.MIN_CHANNEL
-        else:
-            self.__channel += 1
+            else:
+                self.__channel += 1
 
     def channel_down(self) -> None:
         """Decrease channel by 1. Wrap around to MAX_CHANNEL if at MIN_CHANNEL."""
         if self.__status:
             if self.__channel == Television.MIN_CHANNEL:
                 self.__channel = Television.MAX_CHANNEL
-        else:
-            self.__channel -= 1
+            else:
+                self.__channel -= 1
 
     def volume_up(self) -> None:
         """Increase volume by 1 if not at max. Unmute if muted."""
