@@ -22,6 +22,7 @@ class Television:
         """Mute or unmute the TV when it is on."""
         if self.__status:
             self.__muted = not self.__muted
+                
 
     def channel_up(self) -> None:
         """Increase channel by 1. Wrap around to MIN_CHANNEL if at MAX_CHANNEL."""
@@ -44,20 +45,24 @@ class Television:
         if self.__status:
             if self.__muted:
                 self.__muted = False
-        if self.__volume < Television.MAX_VOLUME:
-            self.__volume += 1
+            if self.__volume < Television.MAX_VOLUME:
+                self.__volume += 1
+
 
     def volume_down(self) -> None:
         """Decrease volume by 1 if not at min. Unmute if muted."""
         if self.__status:
             if self.__muted:
                 self.__muted = False
-        if self.__volume > Television.MIN_VOLUME:
-            self.__volume -= 1
+            if self.__volume > Television.MIN_VOLUME:
+                self.__volume -= 1
 
     def __str__(self) -> str:
         """Return a string representation of the TV's state."""
-        return f"Power = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}"
+        if self.__muted:
+            return f"Power = {self.__status}, Channel = {self.__channel}, Volume = {Television.MIN_VOLUME}"
+        else:
+            return f"Power = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}"
 
 
 
